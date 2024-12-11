@@ -1,33 +1,23 @@
 import { createContext, useEffect, useState } from "react";
-import { sampleFoodItems } from "../components/Menu/MenuList";
+//import { sampleFoodItems } from "../components/Checkout/CartSummary";
+import { foodData } from "../components/Home/FoodItem";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
-  const [reviews, setReviews] = useState([
-    // {
-    //   name: "Devinda W.",
-    //   rating: 3,
-    //   review:
-    //     "I love using this website! It’s incredibly easy to navigate, and the food arrives hot and fresh every time. The low prices make it even better! Highly recommend it to all students!",
-    // },
-    // {
-    //   name: "Chalitha A.",
-    //   rating: 4,
-    //   review:
-    //     "I love using this website! It’s incredibly easy to navigate, and the food arrives hot and fresh every time. The low prices make it even better! Highly recommend it to all students!",
-    // },
-  ]);
+  const [reviews, setReviews] = useState([]);
 
   const addReview = (newReview) => {
     // Check if the user has already submitted a review
-    const userReviewExists = reviews.some((review) => review.email === newReview.email);
+    const userReviewExists = reviews.some(
+      (review) => review.email === newReview.email
+    );
 
     if (userReviewExists) {
       alert("You can only submit one review.");
-      setReviews((prev) => [...prev]); 
+      setReviews((prev) => [...prev]);
       return;
     }
 
@@ -58,9 +48,7 @@ const StoreContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = sampleFoodItems.find(
-          (product) => product.id === Number(item)
-        );
+        let itemInfo = foodData.find((product) => product.id === Number(item));
         if (itemInfo) {
           totalAmount += itemInfo.price * cartItems[item];
         } else {
@@ -72,12 +60,12 @@ const StoreContextProvider = (props) => {
   };
 
   const contextValue = {
-    sampleFoodItems,
-    cartItems,
+    foodData,
+    cartItems, // Use cartItems consistently
     setCartItems,
     addToCart,
     removeFromCart,
-    food_list: sampleFoodItems,
+    food_list: foodData,
     reviews,
     addReview,
     getTotalCartAmount,

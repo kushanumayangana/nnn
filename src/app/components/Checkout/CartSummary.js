@@ -11,7 +11,7 @@ const truncateText = (text, maxLength) => {
 
 const CartSummary = () => {
   const {
-    cartItems,
+    cartItems, // Use cartItems
     food_list,
     removeFromCart,
     getTotalCartAmount,
@@ -21,14 +21,16 @@ const CartSummary = () => {
   const navigate = useNavigate();
 
   // Check if the cart is empty
-  const isCartEmpty = Object.values(cartItems).every((quantity) => quantity === 0);
+  const isCartEmpty = Object.values(cartItems).every(
+    (quantity) => quantity === 0
+  );
 
   return (
     <div className="p-4 mt-[-22px]">
       {/* Checkout Section */}
       <div
         onClick={() => navigate("/order")}
-        className="flex items-center justify-between px-4 py-2 mb-4 text-white bg-[#FF4C00] rounded-lg"
+        className="flex items-center justify-between px-4 py-2 mb-4 text-white  bg-[#FF4C00] rounded-lg"
       >
         <button className="text-[16px] md:text-[19px]">Checkout</button>
         <p className="text-[18px] md:text-[22px]">
@@ -52,7 +54,7 @@ const CartSummary = () => {
                 >
                   {/* Item Image */}
                   <img
-                    src={item.image}
+                    src={item.cartImg}
                     alt={item.name}
                     className="object-cover w-full h-[180px] md:w-[136px] md:h-[136px] mr-0 md:mr-4 rounded-lg"
                   />
@@ -78,7 +80,7 @@ const CartSummary = () => {
                         onClick={() => removeFromCart(item.id)}
                         className="flex items-center justify-center w-8 h-8 text-lg font-bold text-white bg-black rounded-full"
                       >
-                        <img src="/Home/minus.png" alt="minus" />
+                        <img src="/Test/Home/minus.png" alt="minus" />
                       </button>
                       <p className="text-lg font-bold w-8 h-8 bg-[#FF4C00] rounded-full text-white flex items-center justify-center">
                         {cartItems[item.id] || 0}
@@ -87,7 +89,7 @@ const CartSummary = () => {
                         onClick={() => addToCart(item.id)}
                         className="flex items-center justify-center w-8 h-8 text-lg font-bold bg-[#FF4C00] rounded-full text-white"
                       >
-                        <img src="/Home/plus.png" alt="plus" />
+                        <img src="Test//Home/plus.png" alt="plus" />
                       </button>
                     </div>
                   </div>

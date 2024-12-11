@@ -38,7 +38,7 @@ const CustomerReviews = () => {
                 {/* User Icon */}
                 <div className="flex items-center justify-center w-12 h-12 mr-4 bg-gray-300 rounded-full">
                   <img
-                    src="/Home/Profile.png"
+                    src="Test/Home/Profile.png"
                     alt="User Profile"
                     className="w-full h-full rounded-full"
                   />
