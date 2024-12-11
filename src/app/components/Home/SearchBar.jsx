@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import CartItem from "../Cart/CartItem";
+import CartItem from "./FoodCard";
 import { FaStar, FaChevronDown } from "react-icons/fa";
-import FeaturedItems from "./FeaturedItems";
 
 const SearchBar = ({ sItem = [] }) => {
   // Default to an empty array if sItem is undefined
@@ -65,11 +64,6 @@ const SearchBar = ({ sItem = [] }) => {
           Select your favorites!
         </span>
       </div>
-
-      {/* Menu list */}
-      {/* <div className="m-2">
-      <FeaturedItems />
-      </div> */}
 
       {/* Filtered food items */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">

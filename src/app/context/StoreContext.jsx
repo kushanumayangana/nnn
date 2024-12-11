@@ -1,6 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-//import { sampleFoodItems } from "../components/Checkout/CartSummary";
-import { foodData } from "../components/Home/FoodItem";
+import { createContext, useState } from "react";
+import { foodData } from "../components/Home/sampleItems";
 
 export const StoreContext = createContext(null);
 

@@ -4,7 +4,6 @@ import PromoBanner from "../components/Home/PromoBanner";
 import SearchBar from "../components/Home/SearchBar";
 import Checkout from "../Checkout/page";
 import SideBar from "../components/common/SideBar";
-//import { foodData } from "../components/Home/FoodItem";
 
 const HomePage = () => {
   const [category, setCategory] = useState("All");
@@ -20,11 +19,9 @@ const HomePage = () => {
             <SearchBar />
 
             <div>
-              <FeaturedItems category={category} />
+              <FeaturedItems category={category} setCategory={setCategory} />
             </div>
 
-            {/* <MenuList category={category} setCategory={setCategory}/> */}
-            {/* <HomeTest/> */}
           </div>
           <div className="flex-auto hidden w-2/6 sm:block">
             <Checkout />

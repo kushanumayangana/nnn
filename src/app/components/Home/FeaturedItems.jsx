@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import CartItem from "../Cart/CartItem";
+import CartItem from "./FoodCard";
 import Menu from "../Menu/Menu";
 
 const FeaturedItems = () => {

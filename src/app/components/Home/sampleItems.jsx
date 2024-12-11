@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-import { StoreContext } from "../../context/StoreContext";
 
 // Food Data
 export const foodData = [
@@ -109,65 +107,4 @@ export const foodData = [
   },
 ];
 
-// Food Item Component
-const FoodItem = ({ id, name, price, description, cartImg }) => {
-  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
-  return (
-    <div className="food-item">
-      {/* Image and Buttons */}
-      <div className="food-item-image">
-        <img className="w-20 h-15" src={cartImg} alt={name} />
-        <div className="cart-actions">
-          <img
-            onClick={() => addToCart(id)}
-            className="w-6 h-6"
-            src="/Home/plus.svg"
-            alt="Add to cart"
-          />
-          <p>{cartItems[id] || 0}</p>
-          <img
-            onClick={() => removeFromCart(id)}
-            className="w-6 h-6"
-            src="/Home/minus.svg"
-            alt="Remove from cart"
-          />
-        </div>
-      </div>
-      {/* Details */}
-      <div className="food-item-details">
-        <p className="food-name">{name}</p>
-        <p className="food-description">{description}</p>
-        <p className="food-price">${price.toFixed(2)}</p>
-      </div>
-    </div>
-  );
-};
-
-// Parent Component
-const FoodList = () => {
-  const cartData = foodData.map(({ id, name, price, description, cartImg }) => ({
-    id,
-    name,
-    price,
-    description,
-    cartImg,
-  }));
-
-  return (
-    <div className="food-list">
-      {cartData.map((item) => (
-        <FoodItem
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          description={item.description}
-          cartImg={item.cartImg}
-        />
-      ))}
-    </div>
-  );
-};
-
-export default FoodList;
