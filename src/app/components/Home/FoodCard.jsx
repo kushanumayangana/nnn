@@ -1,17 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StoreContext } from "../../context/StoreContext";
 import { FaPlus, FaMinus, FaHeart, FaClock } from "react-icons/fa";
+import FoodItemModel from "./FoodItemModel";
 
 const CartItem = ({ item }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
   const [isClicked, setIsClicked] = React.useState(false);
-
   const toggleIconColor = () => {
     setIsClicked(!isClicked);
   };
 
+  //Food Model Set (foodItem_popup)
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
   return (
+    <div>
     <div className='relative m-2'>
       {/* Favorite Button */}
       <div
@@ -50,7 +56,7 @@ const CartItem = ({ item }) => {
         </div>
       </div>
 
-      <img className='object-cover w-full' src={item.cartImg} alt="" />
+      <img onClick={handleOpenModal} className='object-cover w-full' src={item.cartImg} alt="" />
       <div className='flex items-center justify-between'>
           <div className='flex flex-row items-center'>
             <span className='text-black text-[15px] sm:text-[15px] font-bold'>{item.name}</span>
@@ -75,6 +81,15 @@ const CartItem = ({ item }) => {
           
         </div>
     </div>
+
+     {/* Model FoodItem */}
+     <FoodItemModel
+     isOpen={isModalOpen}
+     onClose={handleCloseModal}
+     product={item}
+   />
+   </div>
+   
   );
 };
 
