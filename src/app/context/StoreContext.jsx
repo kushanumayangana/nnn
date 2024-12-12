@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { foodData } from "../components/Home/sampleItems";
+import { foodData } from "../../models/FoodItem";
 
 export const StoreContext = createContext(null);
 
