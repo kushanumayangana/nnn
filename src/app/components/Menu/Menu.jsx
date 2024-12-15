@@ -1,26 +1,35 @@
-import React from 'react'
-import Pizza from '../../assets/menu/pizza.png'
-import Burger from '../../assets/menu/burger.png'
-import FriedRice from '../../assets/menu/fried-rice.png'
-import Noodles from '../../assets/menu/noodles.png'
-import Dounats from '../../assets/menu/donut.png'
+import React from "react";
+import Pizza from "../../assets/menu/pizza.png";
+import Burger from "../../assets/menu/burger.png";
+import FriedRice from "../../assets/menu/fried-rice.png";
+import Noodles from "../../assets/menu/noodles.png";
+import Dounats from "../../assets/menu/donut.png";
 
 const Menu = () => {
   return (
     <div>
-      <div className='flex items-center gap-6 p-2 sm:pl-5 sm:gap-14'>
+      {/* Menu Categories headline */}
+      <div className="flex flex-col leading-5">
+        <span className="text-black text-[20px]  font-bold">
+          Menu Categories
+        </span>
+        <span className="text-black font-semibold text-[14px]">
+          Select your favorites!
+        </span>
+      </div>
+      <div className="flex items-center gap-6 p-2 sm:pl-5 sm:gap-14">
         {/* Pizza */}
         <div clasname="flex items-center justify-center">
           <img src={Pizza} alt="" />
-          <span>Pizza</span>  
+          <span>Pizza</span>
         </div>
-        
+
         {/* Burger */}
         <div clasname="flex items-center justify-center">
           <img src={Burger} alt="" />
           <span>Burger</span>
         </div>
-        
+
         {/* Fried Rice */}
         <div clasname="flex items-center justify-center">
           <img src={FriedRice} alt="" />
@@ -40,7 +49,7 @@ const Menu = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

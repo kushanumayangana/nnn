@@ -1,10 +1,10 @@
 import React from 'react';
+import BannerImg from '../../assets/promoBanner/BannerImg.png'
 
 const PromoBanner = () => {
   return (
-    <div className=" bg-primary h-1/4 flex items-center justify-center">
-      <h2>Special Offer! 20% Off on All Orders</h2>
-      <p>Order now and save big on your favorite food items!</p>
+    <div className="m-2">
+      <img src={BannerImg} alt="" />
     </div>
   );
 };

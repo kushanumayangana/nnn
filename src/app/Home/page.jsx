@@ -2,6 +2,9 @@ import React from 'react';
 import SearchBar from '../components/searchBar/SearchBar'
 
 import CartItem from '../components/Cart/CartItem';
+import PromoBanner from '../components/homepage/PromoBanner';
+import RatingsDroupDown from '../components/searchBar/RatingsDroupDown'
+import Menu from '../components/Menu/Menu'
 
 const HomePage = () => {
   const foodData = [
@@ -12,7 +15,7 @@ const HomePage = () => {
       ratingsCount : 100,
       deliveryFee : 300,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "30-40 mins",
+      deliveryTime: "30-40 min",
       favorite : true,
       cartImg : '/images/img01.png'
     },
@@ -23,7 +26,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 3.49,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "25-35 mins",
+      deliveryTime: "25-35 min",
       favorite : true,
       cartImg : '/images/img02.png'
     },
@@ -34,7 +37,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 1.99,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "15-25 mins",
+      deliveryTime: "15-25 min",
       favorite : true,
       cartImg : '/images/img03.png'
     },
@@ -45,7 +48,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 3.99,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "20-30 mins",
+      deliveryTime: "20-30 min",
       favorite : true,
       cartImg : '/images/img01.png'
     },
@@ -56,7 +59,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 3.99,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "20-30 mins",
+      deliveryTime: "20-30 min",
       favorite : true,
       cartImg : '/images/img01.png'
     },
@@ -67,7 +70,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 3.99,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "20-30 mins",
+      deliveryTime: "20-30 min",
       favorite : true,
       cartImg : '/images/img01.png'
     },
@@ -78,7 +81,7 @@ const HomePage = () => {
       ratingsCount : 200,
       deliveryFee: 3.99,
       deliveryStatus: "Free Dilivery",
-      deliveryTime: "20-30 mins",
+      deliveryTime: "20-30 min",
       favorite : true,
       cartImg : '/images/img01.png'
     }
@@ -88,16 +91,23 @@ const HomePage = () => {
     <div>
       {/* Main grid container */}
       <div className='grid-cols-12 sm:grid'>
+        
           {/* Navigation bar container */}
           <div className='hidden col-span-1 sm:grid'>
             <h1>Navigation</h1>
           </div>
+          
           {/* Banner, SearchBar , CartItems container */}
           <div className='col-span-12 sm:col-span-9'>
 
           <div className='flex items-start justify-center w-full'>
+            <PromoBanner />
+          </div>
+            
+
+          <div className='flex items-start justify-center w-full'>
             {/* Render SearchBar only once */}
-            <SearchBar sItem={foodData} />
+          <SearchBar sItem={foodData} />
           </div>
             
 
