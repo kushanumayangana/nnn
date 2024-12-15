@@ -2,7 +2,7 @@ export const foodData = [
   {
     id: 1,
     name: "Margherita Pizza",
-    price: 4500,
+    price: 45,
     description: "Description hello",
     ratings: 4.5,
     ratingsCount: 100,
