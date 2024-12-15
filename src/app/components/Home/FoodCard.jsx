@@ -17,7 +17,8 @@ const CartItem = ({ item }) => {
   const handleCloseModal = () => setModalOpen(false);
 
   return (
-    <div>
+
+
     <div className='relative m-2'>
       {/* Favorite Button */}
       <div
@@ -80,15 +81,14 @@ const CartItem = ({ item }) => {
           </div>
           
         </div>
-    </div>
+            {/* Model FoodItem */}
+             <FoodItemModel
+             isOpen={isModalOpen}
+             onClose={handleCloseModal}
+             product={item}
+           />
 
-     {/* Model FoodItem */}
-     <FoodItemModel
-     isOpen={isModalOpen}
-     onClose={handleCloseModal}
-     product={item}
-   />
-   </div>
+    </div>
    
   );
 };
