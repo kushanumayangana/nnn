@@ -1,8 +1,8 @@
 export const foodData = [
   {
     id: 1,
-    name: "Margherita Pizzaaaaaaaa",
-    price: 15,
+    name: "Margherita Pizza",
+    price: 45,
     description: "Description hello",
     ratings: 4.5,
     ratingsCount: 100,
@@ -12,15 +12,15 @@ export const foodData = [
     favorite: true,
     cartImg: "Test/images/img01.png",
     customize:{
-      top:[{name:"Fride Egg1" , price:300},{name:"Fride Egg2" , price:300},{name:"Fride Egg3" , price:300}],
-      side:[{name:"Fride Egg4" , price:300},{name:"Fride Egg5" , price:300}]
+      //top:[{name:"Fride Egg1" , price:300},{name:"Fride Egg2" , price:300},{name:"Fride Egg3" , price:300}],
+      //side:[{name:"Fride Egg4" , price:300},{name:"Fride Egg5" , price:300}]
     }
   },
   {
     id: 2,
     name: "Spaghetti Carbonara",
     price: 15,
-    description: "Description hello",
+    description: "Description hello ,",
     ratings: 4.7,
     ratingsCount: 200,
     deliveryFee: 3.49,
