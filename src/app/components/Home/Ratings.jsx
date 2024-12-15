@@ -5,7 +5,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
 import { TiStarHalfOutline } from "react-icons/ti";
 
-const RatingsDroupDown = () => {
+const Ratings = () => {
   // Array of rating options
   const ratings = [
     {
@@ -117,4 +117,4 @@ const RatingsDroupDown = () => {
   );
 };
 
-export default RatingsDroupDown;
+export default Ratings;

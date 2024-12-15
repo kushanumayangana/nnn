@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
 
-const PriceDroupDown = () => {
+const Price = () => {
   // State to track whether the dropdown menu is open or not
   const [isOpen, setIsOpen] = useState(false);
 
@@ -56,4 +56,4 @@ const PriceDroupDown = () => {
   );
 };
 
-export default PriceDroupDown;
+export default Price;

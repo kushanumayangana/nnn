@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import CartItem from "../Cart/CartItem";
+import CartItem from "./FoodCard";
+import Ratings from "./Ratings";
+import Price from "./Price";
+import Offers from "./Offers";
 import Menu from "../Menu/Menu";
-import RatingsDroupDown from "./RatingsDroupDown";
-import PriceDroupDown from '../../components/searchBar/PriceDroupDown'
-import OffersDroupDown from '../../components/searchBar/OffersDroupDown'
 
-const SearchBar = ({ sItem }) => {
+const SearchBar = ({ sItem = [] }) => {
+  // Default to an empty array if sItem is undefined
   const [searchItem, setSearchItem] = useState("");
   const [filteredItems, setFilterItems] = useState(sItem);
 
@@ -13,16 +14,15 @@ const SearchBar = ({ sItem }) => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
 
-    const filteredItems = sItem.filter((sItem) =>
-      sItem.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = sItem.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    setFilterItems(filteredItems);
+    setFilterItems(filtered);
   };
 
   return (
     <div className="w-full">
-      
       <div className="mx-2">
         <input
           placeholder="Search for food items..."
@@ -30,20 +30,26 @@ const SearchBar = ({ sItem }) => {
           onChange={handleInputChange}
           className="w-full p-[6px] my-3 bg-transparent sm:border-[3px] border-[2px] border-black rounded-lg outline-none appearance-none sm:p-2"
         />
-        <div className="flex gap-3 mb-2">
-        <RatingsDroupDown />
-        <PriceDroupDown />
-        <OffersDroupDown />
+
+        {/* Dropdown menus */}
+        <div className="flex space-x-2">
+          <Ratings />
+          <Price />
+          <Offers />
         </div>
-        <Menu />
+        
+        {/* Menu catogery */}
+        <div>
+          <Menu />
+        </div>
       </div>
-      
+
+      {/* Filtered food items */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {filteredItems.map((food, index) => (
+        {filteredItems.map((food) => (
           <CartItem key={food.id} item={food} />
         ))}
       </div>
-      
     </div>
   );
 };
