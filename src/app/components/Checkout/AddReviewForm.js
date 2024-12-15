@@ -62,7 +62,7 @@ const AddReviewForm = () => {
 
   return (
     <div className="relative max-w-md p-6 mx-auto">
-      <h1 className="mb-6 text-2xl font-bold text-black">Tell Us What You Think</h1>
+      <h1 className="mb-6 text-[20px] font-bold text-black">Tell Us What You Think</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Field */}
