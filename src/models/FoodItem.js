@@ -1,7 +1,7 @@
 export const foodData = [
   {
     id: 1,
-    name: "Margherita Pizza",
+    name: "Margherita Pizzaaaaaaaa",
     price: 15,
     description: "Description hello",
     ratings: 4.5,
