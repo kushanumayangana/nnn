@@ -5,6 +5,7 @@ import SearchBar from "../components/Home/SearchBar";
 import Checkout from "../Checkout/page";
 import SideBar from "../components/common/SideBar";
 import { foodData } from "../../models/FoodItem";
+import FavoriteItems from "../components/Home/FavoriteItems";
 
 const HomePage = () => {
   const [category, setCategory] = useState("All");
@@ -17,6 +18,7 @@ const HomePage = () => {
         <div className="grid col-span-9">
           <PromoBanner />
           <SearchBar sItem={foodData} />
+          <FavoriteItems />
           <FeaturedItems category={category} setCategory={setCategory} />
         </div>
         <div className="grid col-span-2">

@@ -16,14 +16,14 @@ const CustomerReviews = () => {
   return (
     <div className="">
       <div className="">
-        <h1 className=" text-[25px] font-bold text-[#FF4C00] leading-tight xl:text-[17px] pr-2 py-2">
+        <h1 className=" text-[25px] font-bold text-[#FF4C00] leading-tight 2xl:text-[17px] xl:text-[14px] pr-2 py-2">
           What Our Customers Are Saying
         </h1>
       </div>
 
       {/* No Reviews Message */}
       {reviews.length === 0 ? (
-        <p className="text-center text-gray-500 text-[18px] font-medium px-2 py-1 leading-5 xl:text-[15px]">
+        <p className="text-center text-gray-500 text-[18px] font-medium px-2 py-1 2xl:leading-5 xl:leading-3 2xl:text-[15px] xl:text-[12px]">
           No reviews yet. Be the first to share your thoughts!
         </p>
       ) : (

@@ -63,7 +63,7 @@ const AddReviewForm = () => {
 
   return (
     <div className="relative max-w-md mx-auto">
-      <h1 className=" text-2xl font-bold text-black xl:text-[18px]">Tell Us What You Think</h1>
+      <h1 className=" text-2xl font-bold text-black 2xl:text-[18px] xl:text-[15px]">Tell Us What You Think</h1>
 
       <form onSubmit={handleSubmit} className="space-y-3">
         {/* Name Field */}
@@ -119,7 +119,7 @@ const AddReviewForm = () => {
                   onClick={() => handleStarClick(starValue)}
                   className={`cursor-pointer text-2xl ${formData.rating >= starValue ? "text-orange-500" : "text-gray-400"}`}
                 >
-                  <FaStar />
+                  <FaStar className="size-5"/>
                 </span>
               );
             })}
@@ -133,7 +133,7 @@ const AddReviewForm = () => {
         <div>
           <button
             type="submit"
-            className="w-full py-2 font-bold text-white bg-[#FF4C00] rounded-lg hover:bg-orange-600"
+            className="w-full py-2 text-white bg-[#FF4C00] rounded-lg hover:bg-orange-600 xl:text-[15px]"
           >
             Add a Review
           </button>

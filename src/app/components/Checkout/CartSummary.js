@@ -33,18 +33,18 @@ const CartSummary = () => {
         onClick={() => navigate("/order")}
         className="flex items-center justify-between py-[4px] mb-1 text-white  bg-[#FF4C00] rounded-lg"
       >
-        <button className="text-[16px] md:text-[19px] xl:text-[15px] m-1">
+        <button className="text-[16px] md:text-[19px] xl:text-[15px] m-1 ml-2">
           Checkout
         </button>
         <p className="text-[18px] md:text-[22px] xl:text-[15px] m-1">
-          Rs.{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount()}/=
+          Rs.{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount()}.00
         </p>
       </div>
 
       {/* Cart Items */}
       <div className="space-y-1">
         {isCartEmpty ? (
-          <p className="text-center text-gray-500 text-[16px] md:text-[18px] xl:text-[15px] font-medium px-1 leading-5">
+          <p className="text-center text-gray-500 text-[16px] md:text-[18px] 2xl:text-[15px] xl:text-[12px] font-medium px-3 2xl:leading-5 xl:leading-3 py-10">
             Your cart is empty. Add items to start shopping!
           </p>
         ) : (

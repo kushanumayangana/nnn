@@ -28,7 +28,7 @@ const SearchBar = ({ sItem = [] }) => {
           placeholder="Search for food items..."
           value={searchItem}
           onChange={handleInputChange}
-          className="w-full p-[6px] my-3 bg-transparent sm:border-[3px] border-[2px] border-black rounded-lg outline-none appearance-none sm:p-2"
+          className="w-full p-[6px] my-3  rounded-full outline-none appearance-none sm:p-2 bg-gray-300"
         />
 
         {/* Dropdown menus */}
