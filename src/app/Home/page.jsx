@@ -4,26 +4,25 @@ import PromoBanner from "../components/Home/PromoBanner";
 import SearchBar from "../components/Home/SearchBar";
 import Checkout from "../Checkout/page";
 import SideBar from "../components/common/SideBar";
+import { foodData } from "../../models/FoodItem";
+import FavoriteItems from "../components/Home/FavoriteItems";
 
 const HomePage = () => {
   const [category, setCategory] = useState("All");
   return (
     <div>
-      <div className="flex flex-col ">
-        <div className="flex gap-2">
-          <div className="flex-none w-1/6 ">
-            <SideBar />
-          </div>
-          <div className="flex-auto w-5/6">
-            <PromoBanner />
-            <SearchBar />
-
-            <div>
-              <FeaturedItems category={category} setCategory={setCategory} />
-            </div>
-
-          </div>
-          <div className="flex-auto hidden w-2/6 sm:block">
+      <div className="grid grid-cols-12">
+        <div className="hidden col-span-1 sm:grid">
+          <SideBar />
+        </div>
+        <div className="grid col-span-9">
+          <PromoBanner />
+          <SearchBar sItem={foodData} />
+          <FavoriteItems />
+          <FeaturedItems category={category} setCategory={setCategory} />
+        </div>
+        <div className="hidden col-span-2 sm:grid">
+          <div>
             <Checkout />
           </div>
         </div>

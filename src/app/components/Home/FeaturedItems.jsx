@@ -9,7 +9,6 @@ const FeaturedItems = () => {
 
   return (
     <div>
-      <Menu setCategory={setCategory} />
       <div className="mt-4">
         <div>
           <span className="text-black text-[20px] ml-2 font-bold">
