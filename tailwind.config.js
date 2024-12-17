@@ -9,10 +9,14 @@ module.exports = {
       colors: {
       primary: "#ff5722", //Can you add custom color
     },
+    screens: {
+      xs: '400px', // custom breakpoint 
+    },
   },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
   ],
 }
 

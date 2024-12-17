@@ -17,9 +17,7 @@ const CartItem = ({ item }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
-
   
-
   return (
     <div>
       <div className="relative m-2">

@@ -44,6 +44,7 @@ const SearchBar = ({ sItem = [] }) => {
         </div>
       </div>
 
+
       {/* Filtered food items */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {filteredItems.map((food) => (
