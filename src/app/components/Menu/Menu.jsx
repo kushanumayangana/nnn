@@ -19,8 +19,8 @@ const Menu = ({ setCategory }) => {
           className="flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setCategory("Pizza")}
         >
-          <img src="Test/assets/menu/pizza.png" alt="Pizza" />
-          <span>Pizza</span>
+          <img className="w-auto h-[35px]" src="Test/assets/menu/pizza.png" alt="Pizza" />
+          <span className="text-[14px]">Pizza</span>
         </div>
 
         {/* Burger */}
@@ -28,8 +28,8 @@ const Menu = ({ setCategory }) => {
           className="flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setCategory("Burger")}
         >
-          <img src="Test/assets/menu/burger.png" alt="Burger" />
-          <span>Burger</span>
+          <img className="w-auto h-[35px]" src="Test/assets/menu/burger.png" alt="Burger" />
+          <span className="text-[14px]">Burger</span>
         </div>
 
         {/* Fried Rice */}
@@ -37,8 +37,8 @@ const Menu = ({ setCategory }) => {
           className="flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setCategory("Fried Rice")}
         >
-          <img src="Test/assets/menu/fried-rice.png" alt="Fried Rice" />
-          <span>Fried Rice</span>
+          <img className="w-auto h-[35px]" src="Test/assets/menu/fried-rice.png" alt="Fried Rice" />
+          <span className="text-[14px]">Fried Rice</span>
         </div>
 
         {/* Noodles */}
@@ -46,8 +46,8 @@ const Menu = ({ setCategory }) => {
           className="flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setCategory("Noodles")}
         >
-          <img src="Test/assets/menu/noodles.png" alt="Noodles" />
-          <span>Noodles</span>
+          <img className="w-auto h-[35px]" src="Test/assets/menu/noodles.png" alt="Noodles" />
+          <span className="text-[14px]">Noodles</span>
         </div>
 
         {/* Donuts */}
@@ -55,8 +55,8 @@ const Menu = ({ setCategory }) => {
           className="flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setCategory("Donuts")}
         >
-          <img src="Test/assets/menu/donut.png" alt="Donuts" />
-          <span>Donuts</span>
+          <img className="w-auto h-[35px]" src="Test/assets/menu/donut.png" alt="Donuts" />
+          <span className="text-[14px]">Donuts</span>
         </div>
       </div>
     </div>

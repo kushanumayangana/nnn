@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="bg-black w-full  h-auto flex justify-between flex-col lg:flex-row pb-8 pr-4 lg:pr-0 mt-12 ">
+    <footer class="bg-black w-full  h-auto flex justify-between flex-col lg:flex-row pb-8 pr-4 lg:pr-0 mt-12 absolute z-20 ">
       <div class="w-auto h-auto m-2 flex flex-col lg:flex-row space-x-6 pl-8">
         <div className="mt-3 text-center lg:text-left ">
           <p className="text-[20px] text-white font-bold">Popular Catogories</p>

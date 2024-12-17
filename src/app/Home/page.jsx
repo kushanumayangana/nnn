@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div>
       <div className="grid grid-cols-12">
-        <div className="grid col-span-1">
+        <div className="hidden col-span-1 sm:grid">
           <SideBar />
         </div>
         <div className="grid col-span-9">
@@ -21,7 +21,7 @@ const HomePage = () => {
           <FavoriteItems />
           <FeaturedItems category={category} setCategory={setCategory} />
         </div>
-        <div className="grid col-span-2">
+        <div className="hidden col-span-2 sm:grid">
           <div>
             <Checkout />
           </div>
