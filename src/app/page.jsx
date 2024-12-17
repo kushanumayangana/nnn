@@ -6,8 +6,6 @@ import Payment from "../app/components/Payment/PaymentSuccess";
 import PaymentFaild from "../app/components/Payment/PaymentFailed";
 import OrderStatus from "../app/components/OrderStatus/OrderStatus";
 
-
-
 const Page = () => {
   return (
     <Router>
@@ -17,9 +15,6 @@ const Page = () => {
         <Route path="/payment" element={< Payment />} />
         <Route path="/paymentfaild" element={< PaymentFaild />} />
         <Route path="/order" element={< OrderStatus />} />
-
-
-
       </Routes>
     </Router>
   );

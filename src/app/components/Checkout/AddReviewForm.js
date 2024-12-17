@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
+import { FaStar } from "react-icons/fa";;
 
 const AddReviewForm = () => {
   const { addReview, reviews } = useContext(StoreContext); // Assuming `reviews` is an array of review objects.
@@ -61,10 +62,10 @@ const AddReviewForm = () => {
   };
 
   return (
-    <div className="relative max-w-md p-6 mx-auto">
-      <h1 className="mb-6 text-[20px] font-bold text-black">Tell Us What You Think</h1>
+    <div className="relative max-w-md mx-auto">
+      <h1 className=" text-2xl font-bold text-black 2xl:text-[18px] xl:text-[15px]">Tell Us What You Think</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3">
         {/* Name Field */}
         <div>
           <input
@@ -72,9 +73,9 @@ const AddReviewForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="*Enter Your Name"
+            placeholder="Enter Your Name"
             required
-            className="w-full p-2 text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full p-2 text-sm border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
 
@@ -85,9 +86,9 @@ const AddReviewForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="*Enter Your Email"
+            placeholder="Enter Your Email"
             required
-            className="w-full p-2 text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full p-2 text-sm border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
 
@@ -97,17 +98,17 @@ const AddReviewForm = () => {
             name="review"
             value={formData.review}
             onChange={handleChange}
-            placeholder="*Write a Review"
+            placeholder="Write a Review"
             required
             rows="4"
-            className="w-full p-2 text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full p-2 text-sm border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
           ></textarea>
         </div>
 
         {/* Star Rating Section */}
         <div className="">
           <label className="block mb-1 text-sm font-medium text-gray-600">
-            Select Rating:
+            Select Rating
           </label>
           <div className="flex">
             {[...Array(5)].map((_, index) => {
@@ -118,7 +119,7 @@ const AddReviewForm = () => {
                   onClick={() => handleStarClick(starValue)}
                   className={`cursor-pointer text-2xl ${formData.rating >= starValue ? "text-orange-500" : "text-gray-400"}`}
                 >
-                  ★
+                  <FaStar className="size-5"/>
                 </span>
               );
             })}
@@ -132,7 +133,7 @@ const AddReviewForm = () => {
         <div>
           <button
             type="submit"
-            className="w-full py-2 font-bold text-white bg-[#FF4C00] rounded-lg hover:bg-orange-600"
+            className="w-full py-2 text-white bg-[#FF4C00] rounded-lg hover:bg-orange-600 xl:text-[15px]"
           >
             Add a Review
           </button>
