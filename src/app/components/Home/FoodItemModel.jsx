@@ -102,9 +102,9 @@ function FoodItemModel({ isOpen, onClose, product }) {
             Rs:{product.price}/=
           </p>
         </div>
-        <img className="" src={product.cartImg} alt="product.image" />
+        <img className="" src={`http://localhost:3001/images/${product.image}`} alt="product.image" />
         
-        {product.customize.top ?
+        {product.customizedItems.itemPart ?
         <>
         <p className="font-bold text-[12px] 2xl:text-[15px]">Add on Top</p>
         <p className="text-[9px] 2xl:text-[13px] text-[#616161] -mt-2">
@@ -112,7 +112,7 @@ function FoodItemModel({ isOpen, onClose, product }) {
         </p>
         </>:null}
 
-        {product.customize.top?.map((item, index) => (
+        {product.customizedItems.itemPart?.map((item, index) => (
           <label key={index} className="block">
             <div className="flex ">
               <input
@@ -125,17 +125,17 @@ function FoodItemModel({ isOpen, onClose, product }) {
               />
               <div>
                 <p className="font-bold text-[10px] 2xl:text-[12px] mb-[-2px]">
-                  {item.name}
+                  {item.itemName}
                 </p>
                 <p className=" font-bold text-[10px] 2xl:text-[11px] text-[#616161]">
-                  Add a RS.{item.price}/=
+                  Add a RS.{item.itemPrice}/=
                 </p>
               </div>
             </div>
           </label>
         ))}
 
-          {product.customize.side ? (
+          {product.customizedItems.itemPart? (
             <>
               <p className="font-bold text-[12px] 2xl:text-[15px] 2xl-1 2xl:mt-2">
                 Add a Side
@@ -145,7 +145,7 @@ function FoodItemModel({ isOpen, onClose, product }) {
               </p>
             </>
           ) : null}
-              {product.customize.side?.map((item, index) => (
+              {product.customizedItems.itemPart?.map((item, index) => (
                 <label key={index} className="block">
                   <div className="flex 2xl:mt-1 ">
                     <input
@@ -158,10 +158,10 @@ function FoodItemModel({ isOpen, onClose, product }) {
                     />
                     <div>
                       <p className="font-bold text-[10px] 2xl:text-[12px] mb-[-2px]">
-                        {item.name}
+                        {item.itemName}
                       </p>
                       <p className="font-bold text-[10px] 2xl:text-[11px] text-[#616161]">
-                        Add a RS.{item.price}/=
+                        Add a RS.{item.itemPrice}/=
                       </p>
                     </div>
                   </div>

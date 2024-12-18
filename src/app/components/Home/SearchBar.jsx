@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CartItem from "./FoodCard";
 import Ratings from "./Ratings";
 import Price from "./Price";
 import Offers from "./Offers";
 import Menu from "../Menu/Menu";
 
-const SearchBar = ({ sItem = [] }) => {
-  // Default to an empty array if sItem is undefined
+const SearchBar = ({ sItem = [], category, setCategory }) => {
+  
   const [searchItem, setSearchItem] = useState("");
   const [filteredItems, setFilterItems] = useState(sItem);
 
@@ -14,12 +14,22 @@ const SearchBar = ({ sItem = [] }) => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
 
-    const filtered = sItem.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    if (Array.isArray(sItem)) {
+      const filtered = sItem.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          (category === "All" || item.category === category)
+      );
 
-    setFilterItems(filtered);
+      setFilterItems(filtered);
+    }
   };
+
+  useEffect(() => {
+    if (Array.isArray(sItem)) {
+      setFilterItems(sItem);
+    }
+  }, [sItem]);
 
   return (
     <div className="w-full">
@@ -37,19 +47,24 @@ const SearchBar = ({ sItem = [] }) => {
           <Price />
           <Offers />
         </div>
-        
+
         {/* Menu catogery */}
         <div>
-          <Menu />
+          <Menu setCategory={setCategory} />
         </div>
       </div>
 
-
       {/* Filtered food items */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {filteredItems.map((food) => (
-          <CartItem key={food.id} item={food} />
-        ))}
+        {Array.isArray(filteredItems) &&
+          filteredItems.length > 0 &&
+          filteredItems.map((food) => <CartItem key={food.id} item={food} />)}
+       
+        {filteredItems.length === 0 && (
+          <div className="text-center text-gray-500 col-span-full">
+            No items found
+          </div>
+        )}
       </div>
     </div>
   );

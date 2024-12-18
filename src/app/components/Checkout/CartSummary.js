@@ -13,7 +13,7 @@ const truncateText = (text, maxLength) => {
 const CartSummary = () => {
   const {
     cartItems, // Use cartItems
-    food_list,
+    foodData,
     removeFromCart,
     getTotalCartAmount,
     addToCart,
@@ -48,7 +48,7 @@ const CartSummary = () => {
             Your cart is empty. Add items to start shopping!
           </p>
         ) : (
-          food_list.map((item) => {
+          foodData.map((item) => {
             if (cartItems[item.id] > 0) {
               return (
                 <div
@@ -57,7 +57,7 @@ const CartSummary = () => {
                 >
                   {/* Item Image */}
                   <img
-                    src={item.cartImg}
+                    src={`http://localhost:3001/images/${item.image}`}
                     alt={item.name}
                     className="rounded-lg w-[90px] h-[90px] "
                   />

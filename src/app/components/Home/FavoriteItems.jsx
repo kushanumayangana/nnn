@@ -1,8 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { foodData } from "../../../models/FoodItem";
 import FoodCard from "../Home/FoodCard";
+import { StoreContext } from "../../context/StoreContext";
 
 const FavoriteItems = () => {
+
+  const { foodData } = useContext(StoreContext);
+  if (!Array.isArray(foodData)) {
+    console.error("foodData is not an array:", foodData);
+    return <div>No items available.</div>; // Graceful fallback
+  }
+
   // Filter the favorite items
   const favoriteItems = foodData.filter((item) => item.favorite === true);
 
@@ -16,7 +24,7 @@ const FavoriteItems = () => {
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {favoriteItems.map((item) => (
-          <FoodCard key={item.id} item={item} /> // Pass each favorite item to FoodCard
+          <FoodCard key={item._id} item={item} /> // Pass each favorite item to FoodCard
         ))}
       </div>
     </div>

@@ -1,11 +1,34 @@
-import React, { useContext, useState } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import React, { useState, useEffect } from "react";
+import { fetchFoodData } from "../../../services/foodService";
 import CartItem from "./FoodCard";
-import Menu from "../Menu/Menu";
 
-const FeaturedItems = () => {
-  const { foodData } = useContext(StoreContext);
-  const [category, setCategory] = useState("All");
+const FeaturedItems = ({ category }) => {
+  const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const data = await fetchFoodData();
+        if (data.success) {
+          setList(data.data);
+        } else {
+          console.error("Error fetching data:", data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchList();
+  }, []);
+
+    // Filter the list based on the selected category
+    const filteredList =
+    category === "All" ? list : list.filter((item) => item.category === category);
+
 
   return (
     <div>
@@ -16,11 +39,13 @@ const FeaturedItems = () => {
           </span>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-          {foodData
-            .filter((item) => category === "All" || category === item.category)
-            .map((food) => (
-              <CartItem key={food.id} item={food} /> // Replacing FoodItem with CartItem
-            ))}
+          {loading ? (
+            <p>Loading...</p>
+          ) : filteredList.length > 0 ? (
+            filteredList.map((item) => <CartItem key={item._id} item={item} />)
+          ) : (
+            <p>No featured foods available.</p>
+          )}
         </div>
       </div>
     </div>

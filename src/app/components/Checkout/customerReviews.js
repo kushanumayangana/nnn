@@ -14,7 +14,7 @@ const CustomerReviews = () => {
   const reviewsToShow = showAll ? reviews : reviews.slice(0, 3);
 
   return (
-    <div className="">
+    <div className="mb-6">
       <div className="">
         <h1 className=" text-[25px] font-bold text-[#FF4C00] leading-tight 2xl:text-[17px] xl:text-[14px] pr-2 py-2">
           What Our Customers Are Saying

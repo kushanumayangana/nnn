@@ -3,16 +3,15 @@ import { StoreContext } from "../../context/StoreContext";
 import { FaPlus, FaMinus, FaHeart, FaClock } from "react-icons/fa";
 import FoodItemModel from "./FoodItemModel";
 
-// Component for individual cart item
 const CartItem = ({ item }) => {
-  // Get cart-related functions and items from the StoreContext
+
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
-  // State to track whether the favorite button is clicked
   const [isClicked, setIsClicked] = React.useState(false);
   const toggleIconColor = () => {
     setIsClicked(!isClicked);
   };
+  
   // State for managing the modal (food item details popup)
   const [isModalOpen, setModalOpen] = useState(false);
   const handleOpenModal = () => setModalOpen(true);
@@ -62,8 +61,8 @@ const CartItem = ({ item }) => {
           {/* Food item image (opens modal on click) */}
           <img
             onClick={handleOpenModal}
-            className="object-cover w-full"
-            src={item.cartImg}
+            className="object-cover w-full rounded-[10px]"
+            src={`http://localhost:3001/images/${item.image}`}
             alt=""
           />
         </div>
@@ -92,11 +91,11 @@ const CartItem = ({ item }) => {
             <span className="2xl:text-[15px] xl:text-[13px]">Rs.</span>
             {item.price}
             <span className="text-gray-500 2xl:text-[15px] xl:text-[13px] ml-1 ">Rs.</span>
-            <span className="line-through text-gray-500 2xl:text-[17px] xl:text-[15px]">{item.offerPrice}</span>
+            <span className="line-through text-gray-500 2xl:text-[17px] xl:text-[15px]">{item.discountPrice}</span>
             
           </span>
           <span className="font-extrabold 2xl:text-[18px] xl:text-[15px] text-red-500">
-            {item.offer}% Off
+            {item.discountPercentage}% Off
           </span>
         </div>
 
@@ -116,7 +115,7 @@ const CartItem = ({ item }) => {
           <div className="flex space-x-1 items-start-center">
             <FaClock className="fill-[#616161]" />
             <span className="text-[#616161] text-[11px] sm:text-[11px] font-semibold">
-              {item.deliveryTime}
+              {item.deliveryDuration}
             </span>
           </div>
         </div>
