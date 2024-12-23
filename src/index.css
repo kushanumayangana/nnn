@@ -39,3 +39,11 @@
     min-width: 0;
   }
 
+
+  select {
+    @apply bg-orange-500 text-white font-bold text-lg;
+  }
+  
+  option {
+    @apply bg-gray-300 text-black;
+  }

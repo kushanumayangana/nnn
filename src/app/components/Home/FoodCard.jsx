@@ -61,7 +61,7 @@ const CartItem = ({ item }) => {
           {/* Food item image (opens modal on click) */}
           <img
             onClick={handleOpenModal}
-            className="object-cover w-full rounded-[10px]"
+            className="object-cover w-[253px] h-[143px] rounded-[10px]"
             src={`http://localhost:3001/images/${item.image}`}
             alt=""
           />
@@ -70,7 +70,7 @@ const CartItem = ({ item }) => {
         {/* Food item name and ratings */}
         <div className="flex items-center justify-between">
           <div className="flex flex-row items-center">
-            <span className="text-black text-[15px] sm:text-[15px] xl:text-[20px] font-bold">
+            <span className="text-black text-[15px] sm:text-[15px] xl:text-[15px] font-bold">
               {item.name}
             </span>
           </div>
@@ -88,10 +88,10 @@ const CartItem = ({ item }) => {
         {/* Placeholder row for additional actions or info */}
         <div className="flex items-center justify-between">
           <span className="font-extrabold 2xl:text-[20px] xl:text-[18px] text-red-500">
-            <span className="2xl:text-[15px] xl:text-[13px]">Rs.</span>
-            {item.price}
-            <span className="text-gray-500 2xl:text-[15px] xl:text-[13px] ml-1 ">Rs.</span>
-            <span className="line-through text-gray-500 2xl:text-[17px] xl:text-[15px]">{item.discountPrice}</span>
+            <span className="2xl:text-[14px] xl:text-[13px]">Rs.</span>
+            {item.totalPrice}/= 
+            <span className="text-gray-500 2xl:text-[14px] xl:text-[14px] ml-1 "> Rs.</span>
+            <span className="line-through text-gray-500 2xl:text-[14px] xl:text-[14px]">{item.discountPrice}</span>
             
           </span>
           <span className="font-extrabold 2xl:text-[18px] xl:text-[15px] text-red-500">
@@ -102,9 +102,9 @@ const CartItem = ({ item }) => {
         {/* Delivery fee and status */}
         <div className="flex items-center justify-between">
           <div className="flex space-x-1 items-start-center">
-            <img className="w-5 h-4" src="/Test/assets/cart/img02.png" alt="DeliveryImg" />
-            <span className="text-[#616161] text-[12px] sm:text-[12px] font-semibold">
-              {item.deliveryFee}
+            <img className="" src="/Test/assets/cart/img02.png" alt="DeliveryImg" />
+            <span className="text-[#616161] text-[12px] sm:text-[12px] font-semibold pl-1">
+                {item.deliveryFee} /=
             </span>
             <span className="text-[#616161] text-[12px] sm:text-[12px] font-semibold">
               {item.deliveryStatus}
@@ -115,7 +115,7 @@ const CartItem = ({ item }) => {
           <div className="flex space-x-1 items-start-center">
             <FaClock className="fill-[#616161]" />
             <span className="text-[#616161] text-[11px] sm:text-[11px] font-semibold">
-              {item.deliveryDuration}
+              {item.deliveryDuration} - {item.deliveryDuration}  min
             </span>
           </div>
         </div>

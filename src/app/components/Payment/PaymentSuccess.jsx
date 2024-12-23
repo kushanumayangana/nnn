@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "../common/CommonButton";
+import { useNavigate } from "react-router-dom";
 
 const PaymentSuccess = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-row items-center justify-center h-screen">
-
       <div className="flex justify-center">
         <img
           src="Test/Payment/PaymentSuccsessfull.png"
@@ -24,16 +26,15 @@ const PaymentSuccess = () => {
           <Button
             text="Order Status"
             src="Test/Payment/quality-badge.png"
-            onClick={() => console.log("Order Status Clicked")}
+            onClick={() => navigate("/order")}
           />
           <Button
             text="Back to Home"
             src="Test/Payment/angle-circle.png"
-            onClick={() => console.log("Back to Home Clicked")}
+            onClick={() => navigate("/")}
           />
         </div>
       </div>
-      
     </div>
   );
 };

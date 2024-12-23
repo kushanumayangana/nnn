@@ -2,11 +2,12 @@ import React from "react";
 import CartSummary from "../components/Checkout/CartSummary";
 import AddReviewForm from "../components/Checkout/AddReviewForm";
 import CustomerReviews from "../components/Checkout/customerReviews";
-import StoreContextProvider from "../context/StoreContext";
+import TotalPriceButton from "../components/Checkout/TotalPriceButton";
 
 function Page() {
   return (
     <div className="fixed z-10 p-2 bg-gray-50">
+      <TotalPriceButton />
       <CartSummary />
       <CustomerReviews />
       <AddReviewForm />

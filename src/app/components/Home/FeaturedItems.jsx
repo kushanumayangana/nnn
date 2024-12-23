@@ -29,6 +29,11 @@ const FeaturedItems = ({ category }) => {
     const filteredList =
     category === "All" ? list : list.filter((item) => item.category === category);
 
+    
+    useEffect(() => {
+      // console.log("Updated List State:", list);
+    }, [list]);
+    
 
   return (
     <div>
@@ -38,7 +43,7 @@ const FeaturedItems = ({ category }) => {
             Featured Foods
           </span>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {loading ? (
             <p>Loading...</p>
           ) : filteredList.length > 0 ? (

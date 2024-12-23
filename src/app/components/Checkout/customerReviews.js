@@ -16,7 +16,7 @@ const CustomerReviews = () => {
   return (
     <div className="mb-6">
       <div className="">
-        <h1 className=" text-[25px] font-bold text-[#FF4C00] leading-tight 2xl:text-[17px] xl:text-[14px] pr-2 py-2">
+        <h1 className=" text-[25px] font-bold text-[#FF4C00] leading-tight 2xl:text-[21px] xl:text-[20px] pr-2 py-2">
           What Our Customers Are Saying
         </h1>
       </div>
