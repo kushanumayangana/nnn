@@ -1,7 +1,7 @@
 import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
-const CreateNewPswModel = ({ isOpen, onClose }) => {
+const CreateNewPswModel = ({ isOpen, handleCreateNewPswModel }) => {
   // prvent bg scrolling
   const openModal = () => {
     document.body.style.overflow = 'hidden';
@@ -21,7 +21,7 @@ const CreateNewPswModel = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between">
           <button
             className="text-2xl text-gray-500 2xl:text-4xl hover:text-black ml-[-15px]"
-            onClick={()=>{onClose();closeModal()}}
+            onClick={()=>{handleCreateNewPswModel();closeModal()}}
           >
             <IoChevronBackOutline className="mt-2"/>
           </button>

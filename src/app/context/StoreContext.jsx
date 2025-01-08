@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import { fetchFoodData } from "../../services/foodService.js";
+import { createContext, useState } from "react";
+//import { fetchFoodData } from "../../services/foodService.js";
 
 export const StoreContext = createContext();
 
