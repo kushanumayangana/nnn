@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
-const ResetPswCodeModel = ({ isOpen, onClose }) => {
+const ResetPswCodeModel = ({ isOpen, handlResetPswCodeModel }) => {
   const user = { mail: "isharawanninayaka26@gmail.com" };
   const inputRefs = useRef([]);
   // prvent bg scrolling
@@ -49,7 +49,7 @@ const ResetPswCodeModel = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between">
           <button
             className="text-2xl text-gray-500 2xl:text-4xl hover:text-black ml-[-15px]"
-            onClick={()=>{onClose();closeModal()}}
+            onClick={()=>{handlResetPswCodeModel(); closeModal()}}
           >
             <IoChevronBackOutline className="mt-2"/>
           </button>

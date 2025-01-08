@@ -6,10 +6,12 @@ import PaymentSuccess from "../app/components/Payment/PaymentSuccess";
 import PaymentFaild from "../app/components/Payment/PaymentFailed";
 import OrderStatus from "../app/components/OrderStatus/OrderStatus";
 import OrderConfirmation from "../app/OrderConfirmation/OrderConfirmation";
+import { ToastContainer } from "react-toastify";
 
 const Page = () => {
   return (
     <Router>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/modeltest" element={<ModelTest />} />

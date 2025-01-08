@@ -4,6 +4,8 @@ import MailVerifyModel from "./MailVerifyModel";
 import FindAccountModel from "./FindAccountModel";
 import EmailNotFoundodel from "./EmailNotFoundodel";
 import CreateNewPswModel from "./CreateNewPswModel";
+import LoginModel from "./LoginModel";
+import SigninMailModel from "./SigninMailModel";
 
 function ModelTest() {
   const [ResetPswCodeModelisModalOpen, setResetPswCodeModelOpen] = useState(false);
@@ -11,46 +13,83 @@ function ModelTest() {
   const [FindAccountModelModalOpen, setFindAccountModelOpen] = useState(false);
   const [EmailNotFoundModelModalOpen, setEmailNotFoundModelOpen] = useState(false);
   const [CreateNewPswModelModalOpen, setCreateNewPswModelOpen] = useState(false);
+  const [LoginModelisOpen, setLoginModelisOpen] = useState(false);
+  const [SigninMailModelisOpen, setSigninMailModelisOpen] = useState(false);
 
   //model  ResetPswCodeModel
-  const handleOpenResetPswCodeModel = () => setResetPswCodeModelOpen(true);
-  const handleCloseResetPswCodeModel = () => setResetPswCodeModelOpen(false);
+  const handlResetPswCodeModel = ()=>{
+    setResetPswCodeModelOpen(!ResetPswCodeModelisModalOpen);
+  }
 
   //model  MailVerifyModel
-  const handleOpenMailVerifyModel = () => setMailVerifyModelOpen(true);
-  const handleCloseMailVerifyModel = () => setMailVerifyModelOpen(false);
+  const handleOpenMailVerifyModel = () => {
+    setMailVerifyModelOpen(!MailVerifyModelModalOpen);
+  }
 
   //model  FindAccountModel
-  const handleFindAccountModel = () => setFindAccountModelOpen(true);
-  const handleCloseFindAccountModel = () => setFindAccountModelOpen(false);
+  const handleFindAccountModel = () => {
+    setFindAccountModelOpen(!FindAccountModelModalOpen);
+  }
 
   //model  EmailNotFoundodel
-  const handleEmailNotFoundodel = () => setEmailNotFoundModelOpen(true);
-  const handleCloseEmailNotFoundodel = () => setEmailNotFoundModelOpen(false);
+  const handleEmailNotFoundodel = () => {
+    setEmailNotFoundModelOpen(!EmailNotFoundModelModalOpen);
+  }
 
   //model  CreateNewPswModel
-  const handleCreateNewPswModel = () => setCreateNewPswModelOpen(true);
-  const handleCloseCreateNewPswModel = () =>setCreateNewPswModelOpen(false);
+  const handleCreateNewPswModel = () => {
+    setCreateNewPswModelOpen(!CreateNewPswModelModalOpen);
+  }
+
+  const handleLoginModel= () => {
+    setLoginModelisOpen(!LoginModelisOpen);
+  }
+
+  const handleSigningMailModel= () => {
+    setSigninMailModelisOpen(!SigninMailModelisOpen);
+  }
+
+  //models data
+  const [email,getemail] = useState("");
+
+
   return (
     <div>
-      <button onClick={handleOpenResetPswCodeModel}>ResetPswCodeModel</button>
-      <ResetPswCodeModel isOpen={ResetPswCodeModelisModalOpen} onClose={handleCloseResetPswCodeModel} />
+      <button onClick={handlResetPswCodeModel}>ResetPswCodeModel</button>
+      <ResetPswCodeModel handlResetPswCodeModel={handlResetPswCodeModel} isOpen={ResetPswCodeModelisModalOpen} />
 
       <br></br>
       <button onClick={handleOpenMailVerifyModel}>MailVerifyModel</button>
-      <MailVerifyModel isOpen={MailVerifyModelModalOpen} onClose={handleCloseMailVerifyModel} />
+      <MailVerifyModel 
+      handleOpenMailVerifyModel={handleOpenMailVerifyModel}
+      handleSigningMailModel={handleSigningMailModel}
+      isOpen={MailVerifyModelModalOpen} 
+      email={email}/>
 
       <br></br>
       <button onClick={handleFindAccountModel}>FindAccountModel</button>
-      <FindAccountModel isOpen={FindAccountModelModalOpen} onClose={handleCloseFindAccountModel} />
+      <FindAccountModel handleFindAccountModel={handleFindAccountModel} isOpen={FindAccountModelModalOpen} />
 
       <br></br>
       <button onClick={handleEmailNotFoundodel}>EmailNotFoundodel</button>
-      <EmailNotFoundodel isOpen={EmailNotFoundModelModalOpen} onClose={handleCloseEmailNotFoundodel} />
+      <EmailNotFoundodel handleEmailNotFoundodel={handleEmailNotFoundodel} isOpen={EmailNotFoundModelModalOpen} />
 
       <br></br>
       <button onClick={handleCreateNewPswModel}>CreateNewPswModel</button>
-      <CreateNewPswModel isOpen={CreateNewPswModelModalOpen} onClose={handleCloseCreateNewPswModel} />
+      <CreateNewPswModel handleCreateNewPswModel={handleCreateNewPswModel} isOpen={CreateNewPswModelModalOpen} />
+
+      <br></br>
+      <button onClick={handleLoginModel}>LoginModel</button>
+      <LoginModel handleLoginModel={handleLoginModel} isOpen={LoginModelisOpen} />
+
+      <br></br>
+      <button onClick={handleSigningMailModel}>SigninMailModel</button>
+      <SigninMailModel 
+      handleSigningMailModel={handleSigningMailModel} 
+      isOpen={SigninMailModelisOpen} 
+      getemail={getemail}
+      handleOpenMailVerifyModel={handleOpenMailVerifyModel} />
+
 
     </div>
 
