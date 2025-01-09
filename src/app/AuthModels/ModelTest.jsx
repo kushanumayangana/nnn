@@ -6,6 +6,9 @@ import EmailNotFoundodel from "./EmailNotFoundodel";
 import CreateNewPswModel from "./CreateNewPswModel";
 import LoginModel from "./LoginModel";
 import SigninMailModel from "./SigninMailModel";
+import SigningFormModel from "./SigningFormModel";
+
+
 
 function ModelTest() {
   const [ResetPswCodeModelisModalOpen, setResetPswCodeModelOpen] = useState(false);
@@ -15,6 +18,7 @@ function ModelTest() {
   const [CreateNewPswModelModalOpen, setCreateNewPswModelOpen] = useState(false);
   const [LoginModelisOpen, setLoginModelisOpen] = useState(false);
   const [SigninMailModelisOpen, setSigninMailModelisOpen] = useState(false);
+  const [SigningFormModelisOpen, setSigningFormModelisOpen] = useState(false);
 
   //model  ResetPswCodeModel
   const handlResetPswCodeModel = ()=>{
@@ -47,6 +51,11 @@ function ModelTest() {
 
   const handleSigningMailModel= () => {
     setSigninMailModelisOpen(!SigninMailModelisOpen);
+  }
+
+  //signing form model
+  const handleSigningFormModel= () => {
+    setSigningFormModelisOpen(!SigningFormModelisOpen);
   }
 
   //models data
@@ -89,6 +98,11 @@ function ModelTest() {
       isOpen={SigninMailModelisOpen} 
       getemail={getemail}
       handleOpenMailVerifyModel={handleOpenMailVerifyModel} />
+
+      <br></br>
+      <button onClick={handleSigningFormModel}>LoginForm</button>
+      <SigningFormModel handleSigningFormModel={handleSigningFormModel} isOpen={SigningFormModelisOpen} />
+      
 
 
     </div>
