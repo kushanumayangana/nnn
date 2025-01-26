@@ -9,6 +9,20 @@ const api = axios.create({
 let isRefreshing = false;
 let refreshSubscribers = [];
 
+
+
+
+// Function to notify all subscribers with the new token ADD DEVINDA
+const notifySubscribers = (newAccessToken) => {
+  refreshSubscribers.forEach((callback) => callback(newAccessToken));
+  refreshSubscribers = [];
+};
+
+
+
+
+
+
 // Add Authorization header to requests
 api.interceptors.request.use(
   (config) => {
@@ -16,6 +30,7 @@ api.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
+    console.log('Request Configuration:', config); 
     return config;
   },
   (error) => Promise.reject(error)
@@ -50,9 +65,17 @@ api.interceptors.response.use(
           localStorage.setItem('accessToken', newAccessToken);
           localStorage.setItem('refreshToken', newRefreshToken);
 
-          // Notify all subscribers about the new token
-          refreshSubscribers.forEach((callback) => callback(newAccessToken));
-          refreshSubscribers = []; // Clear subscribers
+          // // Notify all subscribers about the new token
+          // refreshSubscribers.forEach((callback) => callback(newAccessToken));
+          // refreshSubscribers = []; // Clear subscribers
+
+
+
+          // Notify all subscribers about the new token ADD DEVINDA
+          notifySubscribers(newAccessToken);
+
+
+
 
           isRefreshing = false;
         } catch (refreshError) {
@@ -61,6 +84,7 @@ api.interceptors.response.use(
 
           // Optionally handle logout logic here
           localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken'); //ADD DEVINDA
           window.location.href = '/login'; // Redirect to login
           return Promise.reject(refreshError);
         }

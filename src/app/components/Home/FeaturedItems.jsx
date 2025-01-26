@@ -12,6 +12,7 @@ const FeaturedItems = ({ category }) => {
         const data = await fetchFoodData();
         if (data.success) {
           setList(data.data);
+          // console.log("Fetched food item list:", data.data);
         } else {
           console.error("Error fetching data:", data.message);
         }

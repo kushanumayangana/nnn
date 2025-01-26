@@ -5,11 +5,16 @@ import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { addToCart } from "../../../services/cartService.js";
 
-function FoodItemModel({ isOpen, onClose, product }) {
-  const [count, setcount] = useState(0);
+function FoodItemModel({ isOpen, onClose, product, count, handleIncrement, handleDecrement, userId, setShowLoginMessage, token }) {
+  // const [count, setCount] = useState(product.count || 0);
   const [selectedTops, setSelectedTops] = useState([]);
   const [selectedSides, setSelectedSides] = useState([]);
   const [totalPrice, setTotalPrice] = useState(product.totalPrice || 0);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  // const [showCountMessage, setShowCountMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
 
   // prvent bg scrolling
   const openModal = () => {
@@ -19,17 +24,6 @@ function FoodItemModel({ isOpen, onClose, product }) {
     document.body.style.overflow = "";
   };
 
-  //counter
-  const increment = () => {
-    if (count < 99) {
-      setcount(count + 1);
-    }
-  };
-  const decrement = () => {
-    if (count > 0) {
-      setcount(count - 1);
-    }
-  };
 
   // Generic handler for checkbox selection
   const handleCustomizedChange = (e, item, type) => {
@@ -66,24 +60,60 @@ function FoodItemModel({ isOpen, onClose, product }) {
     e.preventDefault();
     e.stopPropagation();
 
+
+
+
+  if (!token) {
+    console.log("Token not found, triggering login alert.");
+    // alert("Please log in to add items to the cart."); // Ensure this is the alert logic
+    if (typeof setShowLoginMessage === "function") {
+      setShowLoginMessage(true); // Trigger parent component logic
+    }
+    return;
+  }
+
+  
+  if (count <= 0) {
+    // setShowCountMessage(true);
+    alert("Please select a count before adding the item to the cart.");
+    return;
+}
+
+  
     const cartItem = {
+      userId,
       productId: product._id,
       productName: product.name,
       category: product.category,
-      description: product.description,
       image: product.image,
-      ratings: product.ratings,
-      ratingsCount: product.ratingsCount,
-      // selectedTops,
-      selectedSides,
-      totalPrice,
+      totalPrice: product.price * (count + 1),
+      description: product.description,
+      ratings: product.ratings || 0,
+      ratingsCount: product.ratingsCount || 0,
+      selectedSides: product.customizedItems,
       shippingFee: product.deliveryFee,
+      deliveryDuration: product.deliveryDuration,
+      discountPercentage: product.discountPercentage,
+      discountPrice: product.discountPrice,
+      hasOffer: product.hasOffer,
+      quantity: count,
+      
     };
 
     try {
-      const result = await addToCart(cartItem);
+
+      const token = localStorage.getItem("accessToken"); // Retrieve token from localStorage
+      console.log("User token:", token);
+
+      const result = await addToCart(cartItem, token);
+      console.log("Cart API response:", result);
       if (result.success) {
-        console.log("Item successfully added to cart:", result);
+        setShowSuccess(true); // Show success popup
+        setTimeout(() => {
+          setShowSuccess(false);
+          onClose(); 
+       }, 1000); 
+        
       } else {
         console.error("Failed to add item to cart:", result.error);
       }
@@ -91,17 +121,20 @@ function FoodItemModel({ isOpen, onClose, product }) {
       console.error("Error while adding to cart:", error);
     }
 
-    console.log("Cart Items:", cartItem);
+    // console.log("Cart Items:", cartItem);
   };
 
 
 
   useEffect(() => {
-    // console.log("Total Price:", totalPrice);
-  }, [selectedTops, selectedSides]);
+    if (!isOpen) {
+      closeModal();
+    } else {
+      openModal();
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
-  openModal();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -113,8 +146,8 @@ function FoodItemModel({ isOpen, onClose, product }) {
           <button
             className="text-2xl text-gray-500 lg:text-3xl 2xl:text-4xl hover:text-black"
             onClick={() => {
-              onClose();
               closeModal();
+              onClose();
             }}
           >
             &times;
@@ -142,6 +175,8 @@ function FoodItemModel({ isOpen, onClose, product }) {
           src={`http://localhost:3001/images/${product.image}`}
           alt="product.image"
         />
+
+        
 
         {product.customizedItems && product.customizedItems.length > 0 && (
           <>
@@ -179,12 +214,14 @@ function FoodItemModel({ isOpen, onClose, product }) {
           </>
         )}
 
+     
+
         <div className="flex items-center justify-between mt-[-3px] ">
           <div className="w-[100px] h-[30px] flex my-4 2xl:w-[111px] gap-x-[4px] 2xl:gap-x-[6px] ">
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                decrement();
+                handleDecrement();
               }}
               className="w-[22px] xs:w-[30px] h-[22px] xs:h-[30px]  bg-black rounded-full flex items-center justify-center"
               type="button"
@@ -196,8 +233,14 @@ function FoodItemModel({ isOpen, onClose, product }) {
 
 
 
+            <div className="w-[22px] xs:w-[30px] h-[22px] xs:h-[30px] bg-[#FF4C00] rounded-full flex items-center justify-center">
+              <span className=" text-white text-[16px] xs:text-[20px] ">
+                {count}
+              </span>
+            </div>
+            
 
-            {count < 10 ? (
+            {/* {count < 10 ? (
               <div className="w-[22px] xs:w-[30px] h-[22px] xs:h-[30px]  bg-[#FF4C00] rounded-full flex items-center justify-center">
                 <span className=" text-white text-[16px]  xs:text-[20px] ">
                   {count}
@@ -209,12 +252,12 @@ function FoodItemModel({ isOpen, onClose, product }) {
                   {count}
                 </span>
               </div>
-            )}
+            )} */}
 
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                increment();
+                handleIncrement();
               }}
               className="w-[22px] xs:w-[30px] h-[22px] xs:h-[30px]  bg-[#FF4C00] rounded-full flex items-center justify-center  "
               type="button"
@@ -247,6 +290,20 @@ function FoodItemModel({ isOpen, onClose, product }) {
           </div>
         </div>
       </div>
+
+      {showSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="p-4 bg-white rounded-lg shadow-lg">
+            <p>Item added to cart successfully!</p>
+          </div>
+        </div>
+      )}
+
+
+
+
+
+
     </div>
   );
 }
