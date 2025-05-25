@@ -4,14 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Add Inter as the default sans font
+        sans: ['Inter', 'sans-serif'], 
       },
-      colors: {
-      primary: "#ff5722", //Can you add custom color
-    },
-    screens: {
-      xs: '400px', // custom breakpoint 
-    },
   },
   },
   plugins: [
